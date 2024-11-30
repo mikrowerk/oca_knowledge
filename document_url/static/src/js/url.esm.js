@@ -9,11 +9,12 @@ patch(Chatter.prototype, {
     _onAddUrl(event) {
         event.preventDefault();
         event.stopPropagation();
-        this.action.doAction("document_url.action_ir_attachment_add_url", {
+        this.action.doAction("document_url.action_attachment_input_view", {
             additionalContext: {
                 active_id: this.state.thread.id,
                 active_ids: [this.state.thread.id],
                 active_model: this.state.thread.model,
+                attachment_type: 'url'
             },
             onClose: async () => {
                 await this.updateThreadAttachments();

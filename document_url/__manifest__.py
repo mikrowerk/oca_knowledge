@@ -9,8 +9,7 @@
     "license": "AGPL-3",
     "depends": ["mail"],
     "data": [
-        "security/ir.model.access.csv",
-        "view/document_url_view.xml",
+        "view/ir_attachment_extended_view.xml",
     ],
     "assets": {
         "web.assets_backend": [

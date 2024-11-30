@@ -23,7 +23,7 @@
                         t-on-click="_onAddUrl"
                     >
                         <i class="fa fa-plus-square" />
-                        Add URL
+                        Add other assets
                     </button>
                 </div>
             </t>

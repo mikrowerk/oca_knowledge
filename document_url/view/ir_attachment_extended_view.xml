@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_attachment_form_inherit_website" model="ir.ui.view">
+        <field name="name">ir.attachment.form.extended</field>
+        <field name="model">ir.attachment</field>
+        <field name="inherit_id" ref="base.view_attachment_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="/form/sheet" position="replace">
+                <group>
+                    <field name="name"/>
+                    <field name="description"/>
+                    <field name="type"/>
+                    <field name="public"/>
+                </group>
+
+                <group string="Content">
+                    <group>
+                        <field name='raw' widget="image" style="width: 500px;" nolabel="1" invisible="type != 'binary'"
+                               groups="base.group_no_one"/>
+                        <field name="url" widget="url" invisible="type == 'binary'" groups="base.group_no_one"/>
+                    </group>
+                    <group>
+                        <field name="datas" nolabel="1" filename="name" invisible="type == 'url'"/>
+                    </group>
+                </group>
+                <group string="Content-Type">
+                    <group>
+                        <field name="file_size" invisible="type == 'url'"/>
+                    </group>
+                    <group>
+                        <label for="mimetype" string="Mime Type"/>
+                        <div name="creation_div">
+                            <field name="mimetype" readonly="1" class="oe_inline"/>,
+                            <field name="index_content" readonly="1" class="oe_inline"/>
+                        </div>
+                    </group>
+
+
+                </group>
+
+                <group>
+                    <group string="History" groups="base.group_no_one" invisible="not write_date">
+                        <field name="write_uid" readonly="1"/>
+                        <field name="write_date" readonly="1"/>
+                    </group>
+                    <group string="Attached To" groups="base.group_no_one">
+                        <field name="res_model"/>
+                        <field name="res_field"/>
+                        <field name="res_id"/>
+                        <field name="res_name"/>
+                        <field name="company_id" groups="base.group_multi_company" options="{'no_create': True}"/>
+
+                    </group>
+                </group>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="action_attachment_input_view" model="ir.actions.act_window">
+        <field name="name">Attachments Input</field>
+        <field name="res_model">ir.attachment</field>
+        <field name="view_id" ref="view_attachment_form_inherit_website"/>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+</odoo>
