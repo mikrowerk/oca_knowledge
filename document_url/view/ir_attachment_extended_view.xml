@@ -14,8 +14,11 @@
                 </group>
 
                 <group string="Content">
+
+
                     <group>
-                        <field name='raw' widget="image" style="width: 500px;" nolabel="1" invisible="type != 'binary'"
+                        <field name='raw' widget="image" style="width: 500px;" nolabel="1"
+                               invisible="type != 'binary'"
                                groups="base.group_no_one"/>
                         <field name="url" widget="url" invisible="type == 'binary'" groups="base.group_no_one"/>
                     </group>
@@ -23,8 +26,13 @@
                         <field name="datas" nolabel="1" filename="name" invisible="type == 'url'"/>
                     </group>
                 </group>
+
+                <group invisible="type == 'url'">
+                    <field name="original_url" widget="url" groups="base.group_no_one"/>
+                </group>
                 <group string="Content-Type">
                     <group>
+
                         <field name="file_size" invisible="type == 'url'"/>
                     </group>
                     <group>
