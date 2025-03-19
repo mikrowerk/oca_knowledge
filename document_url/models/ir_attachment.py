@@ -41,8 +41,9 @@ class IrAttachmentExtended(models.Model):
         res.update({
             'type': self._context.get('attachment_type', 'binary')
         })
-        pprint.pprint(res, indent=4)
+        # pprint.pprint(res, indent=4)
         if not res.get('res_id', False) or not res.get('res_model', False):
-            print(f"Missing 'res_id' or 'res_model' fields. {res}")
+            pass
+            # print(f"Missing 'res_id' or 'res_model' fields. {res}")
             # raise UserError(f"Missing 'res_id' or 'res_model' fields")
         return res
