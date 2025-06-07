@@ -2,8 +2,6 @@
 # License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl).
 
 from odoo import models, api, fields
-from odoo.exceptions import UserError
-import pprint
 
 
 class IrAttachmentExtended(models.Model):
@@ -24,8 +22,6 @@ class IrAttachmentExtended(models.Model):
 
     @api.model
     def default_get(self, default_fields):
-        print(f"IrAttachmentExtended default_get")
-        pprint.pprint(self._context, indent=4)
         res = super(IrAttachmentExtended, self).default_get(default_fields)
         if self._context.get('params', False):
             res.update({
@@ -41,7 +37,6 @@ class IrAttachmentExtended(models.Model):
         res.update({
             'type': self._context.get('attachment_type', 'binary')
         })
-        # pprint.pprint(res, indent=4)
         if not res.get('res_id', False) or not res.get('res_model', False):
             pass
             # print(f"Missing 'res_id' or 'res_model' fields. {res}")
